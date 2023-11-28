@@ -1,0 +1,16 @@
+# CakePHP 3
+
+/vendor/*
+composer.lock
+
+*.xml
+*.iml
+
+# Idea file
+.idea
+
+# Environnement file
+.env
+
+# Docker Compose files
+database.conf.ini

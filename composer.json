@@ -2,7 +2,7 @@
   "require": {
     "php": ">=8.1",
     "doctrine/orm": "*",
-    "sympfony/cache": "^6.3"
+    "symfony/cache": "^6.3"
   },
   "autoload": {
     "psr-4" : {
