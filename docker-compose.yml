@@ -1,0 +1,41 @@
+version: "3"
+
+networks:
+  catadoct.network:
+    driver: bridge
+
+services:
+
+  catadoct.app:
+    image: 'canals/php:latest'
+    env_file: ./cat.env
+    ports:
+      - '3080:80'
+      - '3443:443'
+    volumes:
+      - ./public:/var/www/html
+      - .:/var/www
+    working_dir: /var/www/
+    networks:
+      - catadoct.network
+    depends_on:
+      - catalogue.db
+
+  catalogue.db:
+    image: postgres:latest
+    env_file: ./cat.env
+    ports:
+      - '5432:5432'
+    networks:
+      - catadoct.network
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=catadoct
+
+  adminer:
+    image: adminer
+    ports:
+      - '8082:8080'
+    networks:
+      - catadoct.network
+
