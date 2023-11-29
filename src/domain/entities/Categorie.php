@@ -20,6 +20,6 @@ class Categorie {
         type: Types::STRING,
         length: 100)]
     private string $libelle;
-    #[OneToMany(targetEntity: Produit::class, mappedBy: "categorie")]
+    #[OneToMany(mappedBy: "categorie", targetEntity: Produit::class)]
     private Collection $categorie;
 }

@@ -22,6 +22,6 @@ class Taille
         type: Types::STRING)]
     private string $libelle;
 
-    #[OneToMany(targetEntity: Tarif::class, mappedBy: "taille")]
+    #[OneToMany(mappedBy: "taille", targetEntity: Tarif::class)]
     private Collection $tarif;
 }

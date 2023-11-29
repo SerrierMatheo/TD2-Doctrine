@@ -35,7 +35,7 @@ class Produit
     #[JoinColumn(name: "categorie_id", referencedColumnName: "id")]
     private ?Categorie $categorie_id = null;
 
-    #[OneToMany(targetEntity: Tarif::class, mappedBy: "produit")]
+    #[OneToMany(mappedBy: "produit", targetEntity: Tarif::class)]
     private Collection $tarif;
 
 
