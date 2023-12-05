@@ -1,5 +1,6 @@
 <?php
 
+use catadoct\catalog\domain\repository\ProduitRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping\Column;
@@ -11,7 +12,7 @@ use Doctrine\ORM\Mapping\Table;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\ManyToOne;
 
-#[Entity]
+#[Entity(repositoryClass: ProduitRepository::class)]
 #[Table(name: "produit")]
 class Produit
 {
@@ -33,11 +34,10 @@ class Produit
     private string $image;
     #[ManyToOne(targetEntity: Categorie::class)]
     #[JoinColumn(name: "categorie_id", referencedColumnName: "id")]
-    private ?Categorie $categorie_id = null;
+    private ?Categorie $categorie = null;
 
     #[OneToMany(mappedBy: "produit", targetEntity: Tarif::class)]
     private Collection $tarif;
-
 
 
 }

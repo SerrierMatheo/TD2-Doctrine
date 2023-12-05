@@ -8,9 +8,10 @@ use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\OneToMany;
 use Doctrine\ORM\Mapping\Table;
+use catadoct\catalog\domain\repository\TailleRepository;
 
 
-#[Entity]
+#[Entity(repositoryClass: TailleRepository::class)]
 #[Table(name: "taille")]
 class Taille
 {

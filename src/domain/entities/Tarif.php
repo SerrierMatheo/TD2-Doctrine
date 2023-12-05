@@ -8,9 +8,9 @@ use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\ManyToOne;
 use Doctrine\ORM\Mapping\Table;
+use catadoct\catalog\domain\repository\TarifRepository;
 
-
-#[Entity]
+#[Entity(repositoryClass: TarifRepository::class)]
 #[Table(name: "tarif")]
 class Tarif
 {
@@ -24,10 +24,10 @@ class Tarif
 
     #[ManyToOne(targetEntity: Produit::class)]
     #[JoinColumn(name: "produit_id", referencedColumnName: "id")]
-    private ?Produit $produit_id = null;
+    private ?Produit $produit = null;
     #[ManyToOne(targetEntity: Taille::class)]
     #[JoinColumn(name: "taille_id", referencedColumnName: "id")]
-    private ?Produit $taille_id = null;
+    private ?Produit $taille = null;
     #[Column(name: "tarif",
         type: Types::INTEGER)]
     private string $tarif;
