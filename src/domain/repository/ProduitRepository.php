@@ -4,8 +4,10 @@ namespace catadoct\catalog\domain\Repository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\EntityRepository;
+
 class ProduitRepository extends EntityRepository
 {
+
     public function getProduitsByDesc(string $keyword): Collection
     {
         return $this->matching(Criteria::create()

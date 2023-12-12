@@ -1,0 +1,2 @@
+docker compose exec -it catadoct.app bash
+php src/console/run1.php

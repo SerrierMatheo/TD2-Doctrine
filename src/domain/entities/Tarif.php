@@ -1,4 +1,5 @@
 <?php
+namespace catadoct\catalog\domain\entities;
 
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping\Column;
@@ -32,4 +33,12 @@ class Tarif
         type: Types::INTEGER)]
     private string $tarif;
 
+    public function __get(string $name)
+    {
+        if (property_exists($this, $name)) {
+            return $this->$name;
+        }
+
+        throw new \InvalidArgumentException("Property $name does not exist in " . static::class);
+    }
 }

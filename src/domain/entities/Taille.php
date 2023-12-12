@@ -1,4 +1,5 @@
 <?php
+namespace catadoct\catalog\domain\entities;
 
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -25,4 +26,13 @@ class Taille
 
     #[OneToMany(mappedBy: "taille", targetEntity: Tarif::class)]
     private Collection $tarif;
+
+    public function __get(string $name)
+    {
+        if (property_exists($this, $name)) {
+            return $this->$name;
+        }
+
+        throw new \InvalidArgumentException("Property $name does not exist in " . static::class);
+    }
 }

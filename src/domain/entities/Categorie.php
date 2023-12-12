@@ -1,4 +1,5 @@
 <?php
+namespace catadoct\catalog\domain\entities;
 
 use catadoct\catalog\domain\repository\CategorieRepository;
 use Doctrine\DBAL\Types\Types;
@@ -23,4 +24,13 @@ class Categorie {
     private string $libelle;
     #[OneToMany(mappedBy: "categorie", targetEntity: Produit::class)]
     private Collection $produits;
+
+    public function __get(string $name)
+    {
+        if (property_exists($this, $name)) {
+            return $this->$name;
+        }
+
+        throw new \InvalidArgumentException("Property $name does not exist in " . static::class);
+    }
 }
