@@ -7,6 +7,13 @@ use Doctrine\ORM\EntityRepository;
 
 class ProduitRepository extends EntityRepository
 {
+    public function getProduitsByCat(string $keyword): Collection
+    {
+        return $this->matching(Criteria::create()
+            ->where(Criteria::expr()->contains('categorie', $keyword))
+            ->orderBy(['numero' => 'ASC'])
+        );
+    }
 
     public function getProduitsByDesc(string $keyword): Collection
     {

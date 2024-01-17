@@ -35,4 +35,13 @@ class Taille
 
         throw new \InvalidArgumentException("Property $name does not exist in " . static::class);
     }
+
+    public function __set($property, $value)
+    {
+        if (property_exists($this, $property)) {
+            $this->$property = $value;
+        } else {
+            throw new \InvalidArgumentException("Property $property does not exist in " . static::class);
+        }
+    }
 }
