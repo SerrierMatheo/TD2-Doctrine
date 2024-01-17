@@ -1,8 +1,8 @@
 <?php
 
 namespace catadoct\catalog\domain\repository;
+use catadoct\catalog\domain\entities\Categorie;
 use Doctrine\ORM\EntityRepository;
-use Doctrine\ORM\NonUniqueResultException;
 
 class CategorieRepository extends EntityRepository
 {
