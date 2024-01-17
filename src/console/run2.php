@@ -91,9 +91,7 @@ echo "Produits contenant du jambon et appartenant à la catégorie 5\n";
 
 $categorie5 = $categorieRepository->find(5);
 
-// Vérifiez si la catégorie existe
 if ($categorie5 !== null) {
-    // Recherchez les produits de la catégorie 5 contenant 'jambon' dans la description
     $descriptionContient = 'jambon';
     $produitsJambon = $produitRepository->createQueryBuilder('p')
         ->where('p.categorie = :categorie')
@@ -103,9 +101,7 @@ if ($categorie5 !== null) {
         ->getQuery()
         ->getResult();
 
-    // Vérifiez si des produits ont été trouvés
     if (!empty($produitsJambon)) {
-        // Parcourez les produits trouvés et affichez leurs détails
         foreach ($produitsJambon as $produit) {
             echo "Numéro du produit : " . $produit->numero . "\n";
             echo "Libellé du produit : " . $produit->libelle . "\n";
@@ -114,10 +110,8 @@ if ($categorie5 !== null) {
             echo "-------------------------\n";
         }
     } else {
-        // Aucun produit trouvé dans la catégorie 5 contenant 'jambon' dans la description
         echo "Aucun produit dans la catégorie 5 contenant 'jambon' dans la description n'a été trouvé.\n";
     }
 } else {
-    // La catégorie 5 n'a pas été trouvée
     echo "Catégorie 5 non trouvée.\n";
 }
